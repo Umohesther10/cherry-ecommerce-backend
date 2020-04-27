@@ -1,5 +1,6 @@
 module.exports = (app) => {
   const product = require("../controllers/product.controller.js");
+  const gallery = require("../controllers/gallery.controller.js");
 
   // Add a Product
   app.post("/products", product.create);
@@ -17,5 +18,13 @@ module.exports = (app) => {
   app.delete("/products/:productId", product.delete);
 
   //Delete All Products
-  app.delete("/products", product.deleteAll)
+  app.delete("/products", product.deleteAll);
+
+  // Add image to gallery
+  app.post("/images", gallery.create);
+
+  // update thumbnail
+app.put("/image/:productId", product.createImage);
+
 };
+
