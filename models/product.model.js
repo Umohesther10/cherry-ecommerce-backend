@@ -4,6 +4,7 @@ const db = require("./db.js");
 // Constructor
 const Product = function (product) {
   this.name = product.name;
+  this.category_name
   this.price = product.price;
   this.quantity_in_stock = product.quantity_in_stock;
   this.description = product.description;
@@ -53,10 +54,11 @@ Product.getAll = (result) => {
 
 Product.updateById = (productId, product, result) => {
   sql.query(
-    `UPDATE products SET name=?, price=?, quantity_in__stock=?, description=?, WHERE _id =? `,
+    `UPDATE products SET name=?, price=?, quantity_in__stock=?, category_name=?, description=?, WHERE _id =? `,
     [
       product.name,
-      product.amount,
+      product.category_name,
+      product.price,
       product.quantity_in__stock,
       product.description,
       productId,
