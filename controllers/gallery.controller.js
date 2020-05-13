@@ -30,3 +30,20 @@ const cloudinary = require("../config/cloudinary.config.js");
         }
     })
 };
+
+exports.findOne = (req, res) => {
+  Gallery.findById(req.params.productId, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found image with id ${req.params.productId}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving image with id " + req.params.productId,
+        });
+      }
+    } else res.send(data);
+  });
+};
+

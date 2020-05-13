@@ -23,6 +23,10 @@ module.exports = (app) => {
   // Add image to gallery
   app.post("/images", gallery.create);
 
+  // Retrieve images from the gallery
+  app.get("/images/:productId", gallery.findOne);
+
+
   // update thumbnail
 app.put("/image/:productId", product.createImage);
 

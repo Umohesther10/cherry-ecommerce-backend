@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     first_name: req.body.first_name,
     last_name: req.body.first_name,
     email: req.body.email,
-    active: req.body.active,
+    password: req.body.password,
+    phone: req.body.phone,
   });
   // console.log(product);
 
@@ -30,7 +31,8 @@ exports.findAll = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving customers record.",
+          err.message ||
+          "Some error occurred while retrieving customers record.",
       });
     else res.send(data);
   });
@@ -87,7 +89,7 @@ exports.delete = (req, res) => {
         });
       } else {
         res.status(500).send({
-          message: "Could not delete customer with id " + req.params. customerId,
+          message: "Could not delete customer with id " + req.params.customerId,
         });
       }
     } else res.send({ message: `customer was deleted successfully!` });
@@ -98,12 +100,10 @@ exports.deleteAll = (req, res) => {
   Customer.removeAll((err, data) => {
     console.log(data);
     if (err) {
-      res
-        .status(500)
-        .send({
-          message:
-            err.message || "Some error occurred while removing all customers .",
-        });
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all customers .",
+      });
     } else res.send({ message: `All customers  were deleted successfully` });
   });
 };

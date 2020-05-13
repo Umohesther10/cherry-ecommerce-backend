@@ -5,7 +5,8 @@ const Customer = function (customer) {
   this.first_name = customer.first_name;
   this.last_name = customer.last_name;
   this.email = customer.email;
-  this.active= customer.active;
+  this.password= customer.password;
+  this.phone=customer.phone;
 };
 
 // Insert
@@ -51,8 +52,8 @@ Customer.getAll = (result) => {
 
 Customer.updateById = (customerId, customer, result) => {
   sql.query(
-    `UPDATE customers SET first_name=?, last_name=?, email=?, active=? WHERE _id =? `,
-    [customer.first_name, customer.last_name, customer.email, customer.active, customerId],
+    `UPDATE customers SET first_name=?, last_name=?, email=?,phone=?,  password=? WHERE _id =? `,
+    [customer.first_name, customer.last_name, customer.email,  customerId],
     (err, res) => {
       if (err) {
         console.log("error:  ", err);

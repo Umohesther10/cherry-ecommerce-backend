@@ -10,6 +10,9 @@ const fileUpload = require("express-fileupload");
 
 require("dotenv").config();
 
+const { sign } = require("jsonwebtoken");
+
+
 //Parse requset of content type application/json
 app.use(bodyParser.json());
 
